@@ -1,6 +1,6 @@
 # Formatting
 
-[![GitHub license](https://img.shields.io/github/license/Peter-Herrmann/formatting)](https://github.com/Peter-Herrmann/formatting/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Peter-Herrmann/formatting/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Peter-Herrmann/formatting)](https://github.com/Peter-Herrmann/formatting/issues)
 
 ## Overview
