@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/Peter-Herrmann/formatting/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Peter-Herrmann/formatting)](https://github.com/Peter-Herrmann/formatting/issues)
+[![Run Clang-Format](https://github.com/Peter-Herrmann/SAME70-FreeRTOS-Plus-TCP/actions/workflows/format.yml/badge.svg)](https://github.com/Peter-Herrmann/SAME70-FreeRTOS-Plus-TCP/actions/workflows/format.yml)
 
 ## Overview
 
