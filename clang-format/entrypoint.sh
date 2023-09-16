@@ -3,6 +3,9 @@
 # Get the directories argument, default to the current directory
 DIRECTORIES=${1:-"."}
 
+# Debug: Show the directories that will be processed
+echo "Debug: Directories to be processed: $DIRECTORIES"
+
 # Navigate to the repository directory
 cd $GITHUB_WORKSPACE
 
@@ -11,6 +14,9 @@ GLOBAL_EXIT_CODE=0
 
 # Loop over each directory to check for formatting discrepancies
 for dir in $DIRECTORIES; do
+  # Debug: Show the current directory being processed
+  echo "Debug: Processing directory: $dir"
+  
   find "$dir" -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -n --Werror || EXIT_CODE=$?
   if [ $EXIT_CODE -ne 0 ]; then
     GLOBAL_EXIT_CODE=1
