@@ -1,0 +1,17 @@
+---
+Language: Cpp  # Applies to both C and C++
+
+# Indentation
+IndentWidth: 4
+
+# Column limit
+ColumnLimit: 100
+
+# New lines for curly braces
+BreakBeforeBraces: Allman
+
+# Pointer Alignment
+PointerAlignment: Right
+
+# Namespace Indentation (primarily for C++)
+NamespaceIndentation: None

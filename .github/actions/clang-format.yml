@@ -1,0 +1,10 @@
+name: 'clang-format'
+description: 'Applies Clang-Format based on your .clang-format file'
+inputs:
+  directories:
+    description: 'Top-level directories to apply formatting'
+    required: false
+    default: '.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
