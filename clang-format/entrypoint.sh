@@ -6,7 +6,19 @@ DIRECTORIES=${1:-"."}
 # Navigate to the repository directory
 cd $GITHUB_WORKSPACE
 
-# Run clang-format on all C/C++ files within the specified directories
+# Check for formatting discrepancies
+find $DIRECTORIES -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -n --Werror
+
+# Capture the exit code
+EXIT_CODE=$?
+
+# If the exit code is non-zero, formatting discrepancies were found
+if [ $EXIT_CODE -ne 0 ]; then
+  echo "Formatting discrepancies found. Failing the action."
+  exit $EXIT_CODE
+fi
+
+# Run clang-format to actually format the files
 find $DIRECTORIES -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
 
 # Done
