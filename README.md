@@ -5,12 +5,11 @@
 
 ## Overview
 
-This GitHub Action applies Clang-Format to your C/C++ code based on your custom `.clang-format` file. You can specify the directories to which the formatting should be applied, making it a flexible solution for different project structures.
+This GitHub Action applies Clang-Format to any C/C++ code based on my custom `.clang-format` file. You can specify the directories to which the formatting should be applied, making it a flexible solution for different project structures.
 
 ## Features
 
 - Reusable across multiple repositories.
-- Customizable formatting through your own `.clang-format` file.
 - Ability to specify target directories for formatting.
 
 ## Prerequisites
@@ -39,4 +38,26 @@ jobs:
     - name: Run Clang-Format
       uses: Peter-Herrmann/formatting/clang-format@main
       with:
-        directories: 'src include' # Replace with your directories
+        directories: 'src include' # If desired, specify directories to run format in
+```
+
+### Step 2: Push Changes
+
+Commit and push this file to your repository. In this example the action will run on every `push` and `pull_request` event.
+
+## Inputs
+
+### `directories`
+
+- **Optional**
+- **Default**: `'.'`
+- Description: A space-separated list of directories where you want to apply formatting. For example, `'src include'`.
+
+## Local Testing
+
+To test this action locally, you can build the Docker image and run it:
+
+```bash
+docker build -t clang-format .
+docker run -v $(pwd):/github/workspace clang-format
+```
