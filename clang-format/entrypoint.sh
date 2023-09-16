@@ -6,20 +6,28 @@ DIRECTORIES=${1:-"."}
 # Navigate to the repository directory
 cd $GITHUB_WORKSPACE
 
-# Check for formatting discrepancies
-find $DIRECTORIES -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -n --Werror
+# Variable to capture the global exit code
+GLOBAL_EXIT_CODE=0
 
-# Capture the exit code
-EXIT_CODE=$?
+# Loop over each directory to check for formatting discrepancies
+for dir in $DIRECTORIES; do
+  find "$dir" -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -n --Werror || EXIT_CODE=$?
+  if [ $EXIT_CODE -ne 0 ]; then
+    GLOBAL_EXIT_CODE=1
+    echo "Formatting discrepancies found in directory: $dir"
+  fi
+done
 
-# If the exit code is non-zero, formatting discrepancies were found
-if [ $EXIT_CODE -ne 0 ]; then
+# If formatting discrepancies were found, fail the action
+if [ $GLOBAL_EXIT_CODE -ne 0 ]; then
   echo "Formatting discrepancies found. Failing the action."
-  exit $EXIT_CODE
+  exit $GLOBAL_EXIT_CODE
 fi
 
-# Run clang-format to actually format the files
-find $DIRECTORIES -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
+# Loop over each directory and apply clang-format
+for dir in $DIRECTORIES; do
+  find "$dir" -name '*.c' -o -name '*.cpp' -o -name '*.h' | xargs clang-format -i -style=file
+done
 
 # Done
 echo "Clang-Format has been applied to directories: $DIRECTORIES."
