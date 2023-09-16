@@ -5,7 +5,7 @@ Language: Cpp  # Applies to both C and C++
 IndentWidth: 4
 
 # Column limit
-ColumnLimit: 100
+ColumnLimit: 80
 
 # New lines for curly braces
 BreakBeforeBraces: Allman
