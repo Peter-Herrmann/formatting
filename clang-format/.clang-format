@@ -15,3 +15,11 @@ PointerAlignment: Right
 
 # Namespace Indentation (primarily for C++)
 NamespaceIndentation: None
+
+# Return Type on the same line as function name
+AlwaysBreakAfterReturnType: None
+PenaltyReturnTypeOnItsOwnLine: 255
+
+UseTab: Never
+
+AllowShortBlocksOnASingleLine: true
