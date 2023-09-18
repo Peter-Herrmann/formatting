@@ -51,7 +51,7 @@ Commit and push this file to your repository. In this example the action will ru
 
 - **Optional**
 - **Default**: `'.'`
-- Description: A space-separated list of directories where you want to apply formatting. For example, `'src include'`.
+- **Description**: A space-separated list of directories where you want to apply formatting. For example, `'src include'`.
 
 ## Local Testing
 
